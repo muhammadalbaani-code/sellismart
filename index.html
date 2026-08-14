@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sellismart — Run your shop with clarity</title>
+<meta name="description" content="Sellismart — POS, inventory, CRM, payments, staff management and analytics for Nigerian retail. All included. All free.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap');
+
+:root{
+  --blue:#3540df;
+  --blue2:#3f86f3;
+  --navy:#091029;
+  --text:#10172d;
+  --muted:#747c8d;
+  --light:#f7f9fd;
+  --line:#e9edf5;
+  --green:#24d36b;
+  --yellow:#f4d900;
+  --red:#ff5757;
+  --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:"DM Sans",Arial,sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit;border:0;cursor:pointer;background:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid #3f86f3;outline-offset:3px}
+.container{width:min(1180px,92%);margin:auto}
+
+/* HEADER */
+.header{height:82px;background:#fff;border-bottom:1px solid #edf0f5;display:flex;align-items:center;position:sticky;top:0;z-index:1000}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center}
+.logo-img{height:34px;width:auto;display:block}
+.menu{display:none;background:transparent;font-size:32px;line-height:1;color:var(--navy)}
+.navlinks{display:flex;gap:28px;align-items:center;color:#596176;font-size:15px}
+.navlinks a:hover{color:var(--blue)}
+.navbtn{padding:12px 20px;background:var(--blue);color:#fff;border-radius:10px;font-weight:700}
+.navbtn:hover{background:#2a35c9}
+.mobile-menu{display:none}
+.mobile-menu.open{display:grid;gap:16px;position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:20px;box-shadow:0 15px 30px rgba(0,0,0,.08)}
+.mobile-menu a{font-weight:600;padding:9px}
+
+/* HERO */
+.hero{padding:82px 0 90px;background:linear-gradient(135deg,#333bd7,#3138d2 55%,#2f36ce);color:#fff;text-align:center}
+.hero-inner{max-width:820px;margin:auto}
+.kicker{letter-spacing:5px;font-weight:750;font-size:14px;margin-bottom:40px;opacity:.92}
+h1{font-size:clamp(45px,7vw,72px);line-height:1.06;letter-spacing:-2.5px}
+.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;color:var(--yellow)}
+.hero p{font-size:19px;line-height:1.7;color:#dce0ff;max-width:640px;margin:36px auto}
+.hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn{padding:15px 25px;border-radius:10px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:200px;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.btn-outline:hover{background:rgba(255,255,255,.08)}
+.btn-white{background:#fff;color:var(--navy)}
+.btn-white:hover{background:#f1f3fb}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#2a35c9}
+.btn-secondary{background:#eef2ff;color:var(--blue)}
+.btn-secondary:hover{background:#e2e8ff}
+
+/* IMAGE CONTAINERS — drop your image link into the src="" of each .shot below */
+.hero-shot-wrap{width:min(1000px,94%);margin:70px auto 0}
+.shot-frame{
+  border-radius:26px;overflow:hidden;box-shadow:0 25px 60px rgba(15,20,90,.28);
+  border:10px solid rgba(255,255,255,.35);background:#eef1fb;
+}
+.shot{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:#eef1fb}
+
+/* TRUST STRIP */
+.trust{padding:46px 0;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
+.trust-row{display:flex;justify-content:center;gap:clamp(30px,7vw,90px);flex-wrap:wrap;color:#596176;font-size:16px;font-weight:600}
+.trust-item{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.trust-icon{width:44px;height:44px;border-radius:50%;background:#f2f4fb;display:grid;place-items:center;color:#4a53d8;font-size:19px}
+
+.section{padding:100px 0}
+.section-label{color:#3344c9;letter-spacing:4px;font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:18px}
+.section-title{font-size:clamp(37px,5vw,60px);line-height:1.06;letter-spacing:-2px}
+.section-sub{font-size:20px;color:var(--muted);line-height:1.7;margin-top:25px;max-width:750px}
+.center{text-align:center;margin-inline:auto}
+.underline{position:relative;display:inline-block}
+.underline:after{content:"";position:absolute;height:7px;background:#3e8bf0;border-radius:50%;left:5%;right:0;bottom:-8px;transform:rotate(-2deg)}
+
+.solution{background:#f8faff;padding-bottom:115px}
+.solution .center{max-width:850px}
+
+.feature{padding:90px 0}
+.feature:nth-of-type(even){background:#fff7f7}
+.feature:nth-of-type(odd){background:#eefaff}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.feature.reverse .feature-grid{direction:rtl}
+.feature.reverse .feature-copy{direction:ltr}
+.screen-wrap{
+  border-radius:28px;overflow:hidden;box-shadow:0 20px 45px rgba(32,80,190,.16);
+  border:8px solid #8bb8ff;background:linear-gradient(145deg,#4789f4,#275ee0);padding:10px;
+}
+.feature-shot{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;background:#eef1fb;display:block}
+.bullets{display:grid;gap:19px;margin-top:32px}
+.bullet{display:flex;gap:18px;align-items:flex-start;color:#737b8b;font-size:18px;line-height:1.55}
+.bullet i{width:36px;height:36px;min-width:36px;background:var(--blue);border-radius:9px;position:relative}
+.bullet i:after{content:"✦";color:#fff;position:absolute;left:9px;top:5px;font-style:normal;font-size:21px}
+
+.problem{background:var(--navy);color:#fff;padding:110px 0}
+.problem .section-label{color:#aab2c7}
+.problem .section-title{color:#fff;max-width:700px}
+.problem .serif{color:#f5df20}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:75px}
+.compare h3{font-size:30px;margin-bottom:35px}
+.compare ul{list-style:none;display:grid;gap:28px}
+.compare li{display:flex;gap:18px;color:#b6bdcc;font-size:18px;line-height:1.5}
+.icon-x,.icon-check{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex:none;font-weight:700}
+.icon-x{border:2px solid var(--red);color:var(--red)}.icon-check{border:2px solid var(--green);color:var(--green)}
+.divider{height:1px;background:#242c45;margin:50px 0}
+.accordion{border-top:1px solid #252d45}
+.acc-item{border-bottom:1px solid #252d45}
+.acc{width:100%;padding:24px 0;display:flex;justify-content:space-between;align-items:center;color:#c1c7d5;font-size:18px;text-align:left}
+.acc span{font-size:26px;transition:transform .2s ease;min-width:20px;text-align:center}
+.acc[aria-expanded="true"] span{transform:rotate(45deg)}
+.acc-panel{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.acc-panel p{color:#9aa1b5;font-size:16px;line-height:1.7;padding-bottom:26px;max-width:640px}
+
+.stats{background:var(--navy);padding:0 0 110px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{background:linear-gradient(145deg,#3d45ed,#3949dc);border-radius:17px;padding:34px;color:#fff;min-height:180px}
+.stat strong{font-size:42px;display:block;margin-bottom:28px}.stat span{color:#dbe0f0;font-size:16px}
+
+.steps{padding:105px 0;background:#fff}
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;margin-top:65px}
+.step{text-align:center;padding:25px}
+.step-icon{width:64px;height:64px;border-radius:16px;background:#4384ee;color:#fff;display:grid;place-items:center;font-size:27px;margin:0 auto}
+.step h3{font-size:25px;margin:28px 0 14px}.step p{color:var(--muted);line-height:1.7;font-size:16px}
+
+.cta{padding:90px 0;background:#fff}
+.cta-box{background:linear-gradient(135deg,#3f87f3,#3c73e8);border-radius:30px;padding:80px 30px;text-align:center;color:#fff;box-shadow:0 20px 40px rgba(44,96,190,.18)}
+.cta-box h2{font-size:clamp(42px,6vw,65px);line-height:1.05;max-width:800px;margin:auto}
+.cta-box .serif{color:#ffe300}
+.cta-box p{font-size:20px;line-height:1.65;max-width:650px;margin:28px auto;color:#eef4ff}
+.cta-btn{background:#fff;color:#4380dc;padding:17px 45px;border-radius:12px;font-weight:700;font-size:18px;display:inline-block}
+.cta-btn:hover{background:#f1f5ff}
+
+/* FOOTER — matches live sellismart.com structure */
+footer{padding:75px 0 35px;border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:45px}
+.footer-brand h3{font-size:26px;font-weight:700;margin-bottom:18px;letter-spacing:-.5px}
+.footer-brand p{color:#7d8492;line-height:1.8;font-size:15px;max-width:420px}
+.social{display:flex;gap:14px;margin-top:24px}
+.social a{width:38px;height:38px;border-radius:50%;background:#f0f2f7;display:grid;place-items:center;color:#5b6475;font-weight:700}
+.social a:hover{background:#e2e6f2}
+.footer-col h4{font-size:16px;font-weight:700;margin-bottom:20px;color:var(--text)}
+.footer-col a,.footer-col p{color:#7d8492;line-height:2;font-size:15px;display:block}
+.footer-col a:hover{color:var(--blue)}
+.contact-line{display:flex;gap:10px;align-items:flex-start;margin-bottom:4px}
+.contact-line span.ic{color:#9aa0b0;min-width:18px}
+.footer-rule{border:0;border-top:1px solid var(--line);margin:50px 0 35px}
+.footer-bottom{text-align:center}
+.footer-bottom .logo{justify-content:center;margin-bottom:14px}
+.footer-bottom p{color:#9298a5;font-size:14px}
+
+.chat{position:fixed;right:22px;bottom:22px;width:64px;height:64px;border-radius:50%;background:#25d66b;color:#fff;display:grid;place-items:center;z-index:1100;box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.chat:hover{background:#1fc25f}
+.chat svg{width:28px;height:28px}
+
+/* TOAST */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:14px 22px;border-radius:10px;font-size:15px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;z-index:2000;box-shadow:0 15px 35px rgba(0,0,0,.25)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){
+  .header{height:72px}.navlinks{display:none}.menu{display:block}
+  .hero{padding:55px 0 70px}
+  .feature-grid{grid-template-columns:1fr;gap:45px}
+  .feature.reverse .feature-grid{direction:ltr}
+  .compare{grid-template-columns:1fr;gap:50px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .step-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+  .trust-row{gap:26px 40px}
+}
+@media(max-width:560px){
+  .container{width:90%}
+  .logo-img{height:28px}
+  h1{letter-spacing:-1.5px}
+  .hero p{font-size:17px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn{width:100%;min-width:0}
+  .section{padding:75px 0}.feature{padding:65px 0}
+  .bullet{font-size:16px}.compare li{font-size:16px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .stat{padding:23px;min-height:150px}.stat strong{font-size:32px}
+  .footer-grid{grid-template-columns:1fr}
+  .chat{width:56px;height:56px;right:16px;bottom:16px}
+  .chat svg{width:24px;height:24px}
+  .trust-row{gap:18px 26px;font-size:14px}
+  .trust-icon{width:38px;height:38px;font-size:16px}
+}
+@media(max-width:380px){
+  h1{font-size:38px}
+  .section-title{font-size:32px}
+}
+</style>
+</head>
+
+<header class="header">
+  <div class="container nav">
+    <a href="#home" class="logo"><img class="logo-img" src="data:image/png;base64,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" alt="Sellismart logo"></a>
+    <nav class="navlinks">
+      <a href="#features">Features</a><a href="#how">How it works</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features" onclick="closeMenu()">Home</a>
+    <a href="#how" onclick="closeMenu()">features</a>
+    <a href="#about" onclick="closeMenu()">FAq</a>
+    <a href="#contact" onclick="closeMenu()">Contact us</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <div class="kicker"># BUILT FOR NIGERIAN RETAIL</div>
+    <h1>The smarter way to sell,<br><span class="serif">with Smart POS/</span></h1>
+    <p>Our platform equips you with the tools to manage inventory and monitor sales performance, helping you thrive in today's competitive market.</p>
+    <div class="hero-actions">
+      <a class="btn btn-outline" href="https://wa.me/2348165966977" target="_blank" rel="noopener">Start Selling Now</a>
+      <button class="btn btn-white" onclick="showToast('Demo booking is launching soon!')">▤ &nbsp; Book a Demo</button>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE — replace the src below with your dashboard/screenshot image link -->
+  <div class="hero-shot-wrap">
+    <div class="shot-frame">
+      <img class ="shot" src="index.html/image/desktop_staff_v2.png" alt="Sellismart dashboard preview">
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="container trust-row">
+    <div class="trust-item"><span class="trust-icon">0</span>Sales analysis</div>
+    <div class="trust-item"><span class="trust-icon">*</span>payment processing</div>
+    <div class="trust-item"><span class="trust-icon">$</span>online store front</div>
+    <div class="trust-item"><span class="trust-icon">@</span>staff role</div>
+    <div class="trust-item"><span class="trust-icon">#</span>Inventory Management</div>
+  </div>
+</section>
+
+<section class="solution" id="features">
+  <div class="container center">
+    <div class="section-label">The solution</div>
+    <h2 class="section-title">Built for the way you actually <span class="serif underline">sell.</span></h2>
+    <p class="section-sub center">One clean, opinionated platform — POS, inventory, CRM, payments, employee management and analytics. All included. All free.</p>
+  </div>
+</section>
+
+<!-- Replace each feature-shot src below with your own screenshot link -->
+<section class="feature" id="pos">
+  <div class="container feature-grid">
+    <div class="screen-wrap">
+      <img class="feature-shot" src="index.html/image/desktop_staff_v2.png " alt="Sellismart point of sale screen">
+    </div>
+    <div class="feature-copy">
+      <div class="section-label">Point of sale system</div>
+      <h2 class="section-title">Running a shop is hard. Your <span class="serif underline">software</span> shouldn't be.</h2>
+      <div class="bullets">
+        <div class="bullet"><i></i><span>Process sales in seconds with a fast, reliable point of sale system.</span></div>
+        <div class="bullet"><i></i><span>Take payments, print receipts, and complete transactions with ease.</span></div>
+        <div class="bullet"><i></i><span>Sell online or in-store from one simple POS platform.</span></div>
+        <div class="bullet"><i></i><span>Speed up checkout and keep every sale automatically recorded.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature reverse" id="inventory">
+  <div class="container feature-grid">
+    <div class="screen-wrap">
+      <img class="feature-shot" src="index.html/image/desktop_staff_v2.png " alt="Sellismart inventory management screen">
+    </div>
+    <div class="feature-copy">
+      <div class="section-label">Inventory management</div>
+      <h2 class="section-title">Apt stock control. <span class="serif">Smart</span> inventory management.</h2>
+      <div class="bullets">
+        <div class="bullet"><i></i><span>Stay on top of your inventory with real-time stock tracking.</span></div>
+        <div class="bullet"><i></i><span>Never run out of stock with smart inventory monitoring.</span></div>
+        <div class="bullet"><i></i><span>Track stock movement, returns, and product availability effortlessly.</span></div>
+        <div class="bullet"><i></i><span>Keep your inventory accurate across every outlet and restock.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="crm">
+  <div class="container feature-grid">
+    <div class="screen-wrap">
+      <img class="feature-shot" src="index.html/image/desktop_staff_v2.png " alt="Sellismart customer management screen">
+    </div>
+    <div class="feature-copy">
+      <div class="section-label">Customer relations</div>
+      <h2 class="section-title">Know your <span class="serif underline">customers.</span> Grow your business.</h2>
+      <div class="bullets">
+        <div class="bullet"><i></i><span>Build customer relationships with organized customer profiles.</span></div>
+        <div class="bullet"><i></i><span>Track purchase history and reward loyal customers effortlessly.</span></div>
+        <div class="bullet"><i></i><span>Understand customers better with insights that drive repeat sales.</span></div>
+        <div class="bullet"><i></i><span>Keep every customer interaction and transaction in one place.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature reverse" id="staff">
+  <div class="container feature-grid">
+    <div class="screen-wrap">
+      <img class="feature-shot" src="index.html/image/desktop_staff_v2.png" alt="index.html/image/desktop_staff_v2.pngindex.html/image/desktop_staff_v2.png ">
+    </div>
+    <div class="feature-copy">
+      <div class="section-label">Staff management</div>
+      <h2 class="section-title">Empower your <span class="serif underline">team.</span> Simplify management.</h2>
+      <div class="bullets">
+        <div class="bullet"><i></i><span>Manage team, roles, and permissions from a single dashboard.</span></div>
+        <div class="bullet"><i></i><span>Track attendance, working hours, and staff activities in real time.</span></div>
+        <div class="bullet"><i></i><span>Give employees the right level of access, protecting your business.</span></div>
+        <div class="bullet"><i></i><span>Monitor performance and improve accountability with activity logs.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem" id="about">
+  <div class="container">
+    <div class="section-label">What you're missing</div>
+    <h2 class="section-title">The cost of running your shop on <span class="serif">memory.</span></h2>
+    <div class="compare">
+      <div>
+        <h3>Without Sellismart</h3>
+        <ul>
+          <li><span class="icon-x">×</span><span>Bestsellers stock out — you don't know until it's too late.</span></li>
+          <li><span class="icon-x">×</span><span>Silent shrinkage: goods walking out with no paper trail.</span></li>
+          <li><span class="icon-x">×</span><span>Staff clocking hours they never actually worked.</span></li>
+          <li><span class="icon-x">×</span><span>No idea which branch, product or hour is your real profit engine.</span></li>
+          <li><span class="icon-x">×</span><span>Reconciling spreadsheets every Sunday night.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>With Sellismart</h3>
+        <ul>
+          <li><span class="icon-check">✓</span><span>Real-time visibility on stock across every outlet.</span></li>
+          <li><span class="icon-check">✓</span><span>Automatic low-stock alerts and one-tap reorders.</span></li>
+          <li><span class="icon-check">✓</span><span>Verified staff hours, sales-per-staff, permissions.</span></li>
+          <li><span class="icon-check">✓</span><span>Dashboards showing top products, hours and branches.</span></li>
+          <li><span class="icon-check">✓</span><span>One calm home screen — from your phone, any night.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc" aria-expanded="false" aria-controls="acc-panel-1" onclick="toggleAcc(this)">Customizable for any business<span>+</span></button>
+        <div class="acc-panel" id="acc-panel-1">
+          <p>From a single shopfront to a multi-branch chain, set up product categories, pricing rules, and staff roles that match how your business actually runs.</p>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc" aria-expanded="false" aria-controls="acc-panel-2" onclick="toggleAcc(this)">Smarter selling with built-in insights<span>+</span></button>
+        <div class="acc-panel" id="acc-panel-2">
+          <p>Sellismart surfaces low-stock warnings, slow-moving items, and your best-performing hours automatically, so you catch problems before they cost you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stat-grid">
+    <div class="stat"><strong>150+</strong><span>Nigerian shops</span></div>
+    <div class="stat"><strong>89%</strong><span>Fewer stockouts</span></div>
+    <div class="stat"><strong>99.9%</strong><span>Service uptime</span></div>
+    <div class="stat"><strong>₦5B+</strong><span>Sales processed</span></div>
+  </div>
+</section>
+
+<section class="steps" id="how">
+  <div class="container center">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">Everything you need to run and <span class="serif underline">grow.</span></h2>
+    <p class="section-sub center">One clean, opinionated platform — POS, inventory, CRM, payments and analytics. All included. All free.</p>
+    <div class="step-grid">
+      <div class="step">
+        <div class="step-icon">◇</div>
+        <h3>Create your free account</h3>
+        <p>Sign up in minutes and set up your first outlet — no card required, no hidden fees.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">▱</div>
+        <h3>Add your catalog</h3>
+        <p>Import or add products, set prices and starting stock, and invite your staff to the dashboard.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">ϟ</div>
+        <h3>Start selling everywhere</h3>
+        <p>Ring up sales in-store and online while stock, cash, and customer records update themselves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ready to upgrade your <span class="serif">shop?</span></h2>
+      <p>Join merchants who ditched expensive fees and spreadsheets for a better way to sell. Zero risk. Zero cost. Forever.</p>
+      <a class="cta-btn" href="https://wa.me/2348165966977" target="_blank" rel="noopener">Start Selling Now &nbsp; →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Sellismart Technologies LTD.</h3>
+        <p>Point of Sales platform is a software solution used by businesses to process transactions, manage inventory, and streamline sales operations.</p>
+        <div class="social">
+          <a href="#" aria-label="LinkedIn" onclick="event.preventDefault();showToast('Follow us soon on LinkedIn!')">in</a>
+          <a href="#" aria-label="Facebook" onclick="event.preventDefault();showToast('Follow us soon on Facebook!')">f</a>
+          <a href="#" aria-label="X (Twitter)" onclick="event.preventDefault();showToast('Follow us soon on X!')">𝕏</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#about">About us</a>
+        <a href="#features">Features</a>
+        <a href="#" onclick="event.preventDefault();showToast('Pricing page is coming soon!')">Pricing</a>
+        <a href="#" onclick="event.preventDefault();showToast('App download is coming soon!')">Download App</a>
+        <a href="#contact">Contact us</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal &amp; Info</h4>
+        <a href="#" onclick="event.preventDefault();showToast('Privacy Policy is coming soon!')">Privacy Policy</a>
+        <a href="#" onclick="event.preventDefault();showToast('Terms & Conditions are coming soon!')">Terms &amp; Conditions</a>
+        <a href="#" onclick="event.preventDefault();showToast('Cookies Policy is coming soon!')">Cookies Policy</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="contact-line"><span class="ic"></span><span>No 51, Akanro Street, Ilasamaja, Mushin, Lagos</span></div>
+        <div class="contact-line"><span class="ic"></span><a href="mailto:communications@sellismart.com">communications@sellismart.com</a></div>
+        <div class="contact-line"><span class="ic"></span><a href="tel:+2348165966977">+234-816-596-6977</a></div>
+      </div>
+    </div>
+
+    <hr class="footer-rule">
+
+    <div class="footer-bottom">
+      <div class="logo"><img class="logo-img" src="data:image/png;base64,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" alt="Sellismart logo"></div>
+      <p>© 2026 Sellismart. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a class="chat" href="https://wa.me/2348165966977" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+function toggleMenu(btn){
+  const menu=document.getElementById("mobileMenu");
+  const open=menu.classList.toggle("open");
+  btn.setAttribute("aria-expanded", open ? "true" : "false");
+  btn.textContent = open ? "✕" : "☰";
+}
+function closeMenu(){
+  const menu=document.getElementById("mobileMenu");
+  menu.classList.remove("open");
+  const btn=document.querySelector(".menu");
+  if(btn){btn.setAttribute("aria-expanded","false");btn.textContent="☰";}
+}
+window.addEventListener("resize",()=>{
+  if(window.innerWidth>900) closeMenu();
+});
+
+function toggleAcc(btn){
+  const panel=document.getElementById(btn.getAttribute("aria-controls"));
+  const open=btn.getAttribute("aria-expanded")==="true";
+  btn.setAttribute("aria-expanded", open ? "false" : "true");
+  panel.style.maxHeight = open ? "0" : panel.scrollHeight+"px";
+}
+
+let toastTimer;
+function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove("show"),2600);
+}
+</script>
+</body>
+</html>
